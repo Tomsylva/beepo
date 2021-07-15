@@ -67,19 +67,19 @@ function App() {
         <div className="snyth-page">
           <Beepotext letterColor={letterColor} activeNote={activeNote} />
           {touchMe ? (
-            <motion.h3
+            <motion.h6
               initial="hidden"
               animate="visible"
               variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                hidden: { opacity: 0, y: -150 },
+                visible: { opacity: 1, y: -150 },
                 transition: {
                   delay: 0.1,
                 },
               }}
             >
               Make some noise...
-            </motion.h3>
+            </motion.h6>
           ) : (
             <MotionDivs activeNote={activeNote} letterColor={letterColor} />
           )}
