@@ -1,16 +1,16 @@
 import "./App.css";
 import React from "react";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Beepotext from "./Beepotext";
 import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 
 function App() {
-  // const [currentInstrument, setCurrentInstrument] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const [page, setPage] = React.useState("home");
   const [touchMe, setTouchMe] = React.useState(true);
   const [letterColor, setLetterColor] = React.useState("white");
+  const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -22,15 +22,20 @@ function App() {
       const note = midiMessage.data[1];
       const velocity = midiMessage.data.length > 2 ? midiMessage.data[2] : 0;
 
+      function endOfNote() {
+        setTimeout(function () {
+          setLetterColor("white");
+          setBackgroundColor("#2f333a");
+        }, 150);
+      }
+
       // eslint-disable-next-line
       switch (command) {
         case 144:
           if (velocity > 0) {
-            // const instrument = instruments[note].instrumentName;
             const currentColor = instruments[note].color;
-            // setCurrentInstrument(instrument);
-            // console.log(currentInstrument);
             setLetterColor(currentColor);
+            setBackgroundColor("#30353d");
             setTouchMe(false);
             if (midiMessage.target.name !== "Playtron") {
               setErrorMessage(
@@ -43,12 +48,6 @@ function App() {
           break;
         case 128:
           endOfNote();
-          function endOfNote() {
-            setTimeout(function () {
-              // setCurrentInstrument("");
-              setLetterColor("white");
-            }, 300);
-          }
           break;
       }
     }
@@ -61,28 +60,30 @@ function App() {
   navigator.requestMIDIAccess().then(onSuccess, onFail);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundColor: backgroundColor, transition: "all 0.05s" }}
+    >
       {page === "home" ? (
         <HomePage setPage={setPage} />
       ) : (
         <div className="snyth-page">
           <Beepotext letterColor={letterColor} />
-          {touchMe ? <h3>Make some noise...</h3> : null}
-          {/* {currentInstrument ? (
-            <motion.div
-              initial="visible"
-              animate="hidden"
+          {touchMe ? (
+            <motion.h3
+              initial="hidden"
+              animate="visible"
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 },
                 transition: {
-                  delay: 0.01,
+                  delay: 0.1,
                 },
               }}
             >
-              <h2>{currentInstrument}</h2>
-            </motion.div>
-          ) : null} */}
+              Make some noise...
+            </motion.h3>
+          ) : null}
           {errorMessage ? <h3>{errorMessage}</h3> : null}
         </div>
       )}

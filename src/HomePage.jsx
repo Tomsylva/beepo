@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function HomePage(props) {
   const { setPage } = props;
@@ -8,12 +9,35 @@ function HomePage(props) {
   };
 
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+        transition: {
+          delay: 0.1,
+        },
+      }}
+    >
       <h1>
-        Beepo<span class="yellow">.</span>
+        Beepo<span className="yellow">.</span>
       </h1>
-      <button onClick={loadSynth}>Let's go!</button>
-    </div>
+      <motion.button
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
+          transition: {
+            delay: 0.5,
+          },
+        }}
+        onClick={loadSynth}
+      >
+        Let's go!
+      </motion.button>
+    </motion.div>
   );
 }
 
