@@ -1,12 +1,12 @@
 import "./App.css";
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Beepotext from "./Beepotext";
 import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 
 function App() {
-  const [currentInstrument, setCurrentInstrument] = React.useState("");
+  // const [currentInstrument, setCurrentInstrument] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const [page, setPage] = React.useState("home");
   const [touchMe, setTouchMe] = React.useState(true);
@@ -26,9 +26,10 @@ function App() {
       switch (command) {
         case 144:
           if (velocity > 0) {
-            const instrument = instruments[note].instrumentName;
+            // const instrument = instruments[note].instrumentName;
             const currentColor = instruments[note].color;
-            setCurrentInstrument(instrument);
+            // setCurrentInstrument(instrument);
+            // console.log(currentInstrument);
             setLetterColor(currentColor);
             setTouchMe(false);
             if (midiMessage.target.name !== "Playtron") {
@@ -44,7 +45,7 @@ function App() {
           endOfNote();
           function endOfNote() {
             setTimeout(function () {
-              setCurrentInstrument("");
+              // setCurrentInstrument("");
               setLetterColor("white");
             }, 300);
           }
@@ -67,7 +68,7 @@ function App() {
         <div className="snyth-page">
           <Beepotext letterColor={letterColor} />
           {touchMe ? <h3>Make some noise...</h3> : null}
-          {currentInstrument ? (
+          {/* {currentInstrument ? (
             <motion.div
               initial="visible"
               animate="hidden"
@@ -81,7 +82,7 @@ function App() {
             >
               <h2>{currentInstrument}</h2>
             </motion.div>
-          ) : null}
+          ) : null} */}
           {errorMessage ? <h3>{errorMessage}</h3> : null}
         </div>
       )}
