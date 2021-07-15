@@ -13,3 +13,18 @@
 .yellow {
   color: rgb(255, 255, 98);
 }
+
+button {
+  padding: 20px 40px;
+  background-color: #434953;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.5s;
+}
+
+button:hover {
+  background-color: rgb(255, 255, 98);
+  color: #2f333a;
+  transition: all 0.5s;
+}

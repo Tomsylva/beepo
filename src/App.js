@@ -1,12 +1,16 @@
 import "./App.css";
 import React from "react";
 import { motion } from "framer-motion";
+import Beepotext from "./Beepotext";
+import { instruments } from "./instruments";
+import HomePage from "./HomePage";
 
 function App() {
   const [currentInstrument, setCurrentInstrument] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const [page, setPage] = React.useState("home");
   const [touchMe, setTouchMe] = React.useState(true);
+  const [letterColor, setLetterColor] = React.useState("white");
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -17,35 +21,15 @@ function App() {
       const command = midiMessage.data[0];
       const note = midiMessage.data[1];
       const velocity = midiMessage.data.length > 2 ? midiMessage.data[2] : 0;
-      const instruments = {
-        36: {
-          instrumentName: "KICK",
-          image: "synth/client/public/pngegg.png",
-          sound: "#",
-        },
-        37: { instrumentName: "SNARE", image: "#", sound: "#" },
-        38: { instrumentName: "HATS", image: "#", sound: "#" },
-        39: { instrumentName: "CRASH", image: "#", sound: "#" },
-        40: { instrumentName: "BASS E", image: "#", sound: "#" },
-        41: { instrumentName: "BASS F#", image: "#", sound: "#" },
-        42: { instrumentName: "BASS G#", image: "#", sound: "#" },
-        43: { instrumentName: "BASS A", image: "#", sound: "#" },
-        44: { instrumentName: "MELODY E", image: "#", sound: "#" },
-        45: { instrumentName: "MELODY A", image: "#", sound: "#" },
-        46: { instrumentName: "MELODY G#", image: "#", sound: "#" },
-        47: { instrumentName: "MEDLODY C#", image: "#", sound: "#" },
-        48: { instrumentName: "BEEPS E", image: "#", sound: "#" },
-        49: { instrumentName: "BEEPS C#", image: "#", sound: "#" },
-        50: { instrumentName: "BANANA!", image: "#", sound: "#" },
-        51: { instrumentName: "SPOON!", image: "#", sound: "#" },
-      };
 
       // eslint-disable-next-line
       switch (command) {
         case 144:
           if (velocity > 0) {
             const instrument = instruments[note].instrumentName;
+            const currentColor = instruments[note].color;
             setCurrentInstrument(instrument);
+            setLetterColor(currentColor);
             setTouchMe(false);
             if (midiMessage.target.name !== "Playtron") {
               setErrorMessage(
@@ -61,6 +45,7 @@ function App() {
           function endOfNote() {
             setTimeout(function () {
               setCurrentInstrument("");
+              setLetterColor("white");
             }, 300);
           }
           break;
@@ -72,23 +57,15 @@ function App() {
     setErrorMessage("Could not connect to your midi device");
   };
 
-  const loadSynth = function () {
-    setPage("synth");
-  };
-
   navigator.requestMIDIAccess().then(onSuccess, onFail);
 
   return (
     <div className="App">
       {page === "home" ? (
-        <div>
-          <h1>
-            Beepo<span class="yellow">.</span>
-          </h1>
-          <button onClick={loadSynth}>Let's go!</button>
-        </div>
+        <HomePage setPage={setPage} />
       ) : (
         <div className="snyth-page">
+          <Beepotext letterColor={letterColor} />
           {touchMe ? <h3>Make some noise...</h3> : null}
           {currentInstrument ? (
             <motion.div
