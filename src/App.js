@@ -82,7 +82,9 @@ function App() {
     <div className="App">
       {page === "home" ? (
         <div>
-          <h1>Beepo</h1>
+          <h1>
+            Beepo<span class="yellow">.</span>
+          </h1>
           <button onClick={loadSynth}>Let's go!</button>
         </div>
       ) : (
