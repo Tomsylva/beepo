@@ -20,9 +20,7 @@ function HomePage(props) {
         },
       }}
     >
-      <h1>
-        Beepo<span className="yellow">.</span>
-      </h1>
+      <h1>Beepo.</h1>
       <motion.button
         initial="hidden"
         animate="visible"

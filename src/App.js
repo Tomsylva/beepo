@@ -65,27 +65,41 @@ function App() {
         <HomePage setPage={setPage} />
       ) : (
         <div className="snyth-page">
-          <Beepotext letterColor={letterColor} activeNote={activeNote} />
           {touchMe ? (
             <motion.h6
+              className="touch-me"
               initial="hidden"
               animate="visible"
               variants={{
                 hidden: { opacity: 0, y: -150 },
                 visible: { opacity: 1, y: -150 },
                 transition: {
-                  delay: 0.1,
+                  delay: 0.5,
                 },
               }}
             >
               Make some noise...
             </motion.h6>
           ) : (
-            <MotionDivs activeNote={activeNote} letterColor={letterColor} />
+            <>
+              <Beepotext letterColor={letterColor} activeNote={activeNote} />
+              <MotionDivs activeNote={activeNote} letterColor={letterColor} />
+            </>
           )}
           {errorMessage ? <h3>{errorMessage}</h3> : null}
         </div>
       )}
+      <footer>
+        <p>
+          <a
+            href="https://www.linkedin.com/in/thomas-sylva/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            © Tom Sylva 2021
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

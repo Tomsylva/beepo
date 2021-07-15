@@ -6,15 +6,31 @@ function MotionDivs(props) {
 
   const circleVariables = {
     still: {
-      y: 300,
+      y: 0,
     },
     moving: {
-      y: 100,
+      y: -200,
+    },
+  };
+
+  const divVariables = {
+    start: {
+      y: -250,
+      x: -87,
+    },
+    end: {
+      y: 0,
+      x: -87,
     },
   };
 
   return (
-    <div className="motion-divs">
+    <motion.div
+      id="motion-divs"
+      variants={divVariables}
+      initial="start"
+      animate="end"
+    >
       <motion.div
         className="animate-circle"
         variants={circleVariables}
@@ -111,7 +127,7 @@ function MotionDivs(props) {
         animate={activeNote === 51 ? "moving" : "still"}
         style={{ backgroundColor: activeNote === 51 ? letterColor : "white" }}
       ></motion.div>
-    </div>
+    </motion.div>
   );
 }
 

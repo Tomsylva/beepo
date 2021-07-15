@@ -1,4 +1,13 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0;
+}
+
 .App {
+  width: 100%;
+  height: 100%;
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -7,16 +16,18 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.yellow {
-  color: rgb(255, 255, 98);
-}
-
-.motion-divs {
+#motion-divs {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  position: absolute;
+  margin: auto;
+  top: 92%;
+  left: 50%;
 }
 
 .animate-circle {
@@ -34,10 +45,42 @@ button {
   border-radius: 8px;
   color: white;
   transition: all 0.5s;
+  position: absolute;
+  margin: 0;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h6 .touch-me {
+  position: absolute;
+  margin: 0;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 button:hover {
   background-color: rgb(255, 255, 98);
   color: #2f333a;
   transition: all 0.5s;
+}
+
+p {
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+}
+
+p a {
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-height: 600px) {
+  .beepo-text {
+    display: none;
+  }
 }
