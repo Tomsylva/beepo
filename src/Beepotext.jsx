@@ -1,28 +1,31 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Beepotext(props) {
-  const { letterColor } = props;
+  const { letterColor, activeNote } = props;
 
-  const randomLetter = Math.floor(Math.random() * 6);
+  const randomLetter = Math.ceil(Math.random() * 6);
+
+  const h1Variants = {
+    small: { scale: 1 },
+    big: { scale: 1.05 },
+  };
 
   return (
     <div>
-      <h1 className="beepo-text">
-        <span
-          style={{
-            color: randomLetter === 0 ? letterColor : "white",
-            transition: "all 0.25s",
-          }}
-        >
-          B
-        </span>
+      <motion.h1
+        className="beepo-text"
+        initial="small"
+        animate={activeNote > 0 ? "big" : "small"}
+        variants={h1Variants}
+      >
         <span
           style={{
             color: randomLetter === 1 ? letterColor : "white",
             transition: "all 0.25s",
           }}
         >
-          e
+          B
         </span>
         <span
           style={{
@@ -38,7 +41,7 @@ function Beepotext(props) {
             transition: "all 0.25s",
           }}
         >
-          p
+          e
         </span>
         <span
           style={{
@@ -46,7 +49,7 @@ function Beepotext(props) {
             transition: "all 0.25s",
           }}
         >
-          o
+          p
         </span>
         <span
           style={{
@@ -54,9 +57,17 @@ function Beepotext(props) {
             transition: "all 0.25s",
           }}
         >
+          o
+        </span>
+        <span
+          style={{
+            color: randomLetter === 6 ? letterColor : "white",
+            transition: "all 0.25s",
+          }}
+        >
           .
         </span>
-      </h1>
+      </motion.h1>
     </div>
   );
 }

@@ -13,6 +13,20 @@
   color: rgb(255, 255, 98);
 }
 
+.motion-divs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.animate-circle {
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  background-color: white;
+  margin: 2px;
+}
+
 button {
   padding: 20px 40px;
   background-color: #434953;
