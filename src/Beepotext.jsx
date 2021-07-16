@@ -22,7 +22,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 1 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           B
@@ -30,7 +30,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 2 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           e
@@ -38,7 +38,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 3 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           e
@@ -46,7 +46,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 4 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           p
@@ -54,7 +54,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 5 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           o
@@ -62,7 +62,7 @@ function Beepotext(props) {
         <span
           style={{
             color: randomLetter === 6 ? letterColor : "white",
-            transition: "all 0.25s",
+            transition: "all 0.1s",
           }}
         >
           .
