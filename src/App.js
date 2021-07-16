@@ -19,6 +19,10 @@ import Asplatter from "./instrumentSounds/asplatter.mp3";
 import Csplatter from "./instrumentSounds/csplatter.mp3";
 import Fsplatter from "./instrumentSounds/fsplatter.mp3";
 import Gsplatter from "./instrumentSounds/gsplatter.mp3";
+import Abass from "./instrumentSounds/abass.mp3";
+import Cbass from "./instrumentSounds/cbass.mp3";
+import Fbass from "./instrumentSounds/fbass.mp3";
+import Gbass from "./instrumentSounds/gbass.mp3";
 
 function App() {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -28,15 +32,9 @@ function App() {
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
 
-  const [playKick] = useSound(kickSound, {
-    interrupt: true,
-  });
-  const [playSnare] = useSound(snareSound, {
-    interrupt: true,
-  });
-  const [playHats] = useSound(hatsSound, {
-    interrupt: true,
-  });
+  const [playKick] = useSound(kickSound, { interrupt: true });
+  const [playSnare] = useSound(snareSound, { interrupt: true });
+  const [playHats] = useSound(hatsSound, { interrupt: true });
   const [playCrash] = useSound(crashSound, { interrupt: true });
   const [playAbeep] = useSound(AbeepSound, { interrupt: true });
   const [playCbeep] = useSound(CbeepSound, { interrupt: true });
@@ -46,6 +44,10 @@ function App() {
   const [playCsplatter] = useSound(Csplatter, { interrupt: true });
   const [playFsplatter] = useSound(Fsplatter, { interrupt: true });
   const [playGsplatter] = useSound(Gsplatter, { interrupt: true });
+  const [playAbass] = useSound(Abass, { interrupt: true });
+  const [playCbass] = useSound(Cbass, { interrupt: true });
+  const [playFbass] = useSound(Fbass, { interrupt: true });
+  const [playGbass] = useSound(Gbass, { interrupt: true });
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -75,6 +77,18 @@ function App() {
                 break;
               case 39:
                 playCrash();
+                break;
+              case 40:
+                playAbass();
+                break;
+              case 41:
+                playCbass();
+                break;
+              case 42:
+                playFbass();
+                break;
+              case 43:
+                playGbass();
                 break;
               case 44:
                 playAsplatter();
