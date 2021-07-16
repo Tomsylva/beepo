@@ -15,6 +15,10 @@ import AbeepSound from "./instrumentSounds/abeep.mp3";
 import CbeepSound from "./instrumentSounds/cbeep.mp3";
 import FbeepSound from "./instrumentSounds/fbeep.mp3";
 import GbeepSound from "./instrumentSounds/gbeep.mp3";
+import Asplatter from "./instrumentSounds/asplatter.mp3";
+import Csplatter from "./instrumentSounds/csplatter.mp3";
+import Fsplatter from "./instrumentSounds/fsplatter.mp3";
+import Gsplatter from "./instrumentSounds/gsplatter.mp3";
 
 function App() {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -38,6 +42,10 @@ function App() {
   const [playCbeep] = useSound(CbeepSound, { interrupt: true });
   const [playFbeep] = useSound(FbeepSound, { interrupt: true });
   const [playGbeep] = useSound(GbeepSound, { interrupt: true });
+  const [playAsplatter] = useSound(Asplatter, { interrupt: true });
+  const [playCsplatter] = useSound(Csplatter, { interrupt: true });
+  const [playFsplatter] = useSound(Fsplatter, { interrupt: true });
+  const [playGsplatter] = useSound(Gsplatter, { interrupt: true });
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -67,6 +75,18 @@ function App() {
                 break;
               case 39:
                 playCrash();
+                break;
+              case 44:
+                playAsplatter();
+                break;
+              case 45:
+                playCsplatter();
+                break;
+              case 46:
+                playFsplatter();
+                break;
+              case 47:
+                playGsplatter();
                 break;
               case 48:
                 playAbeep();
