@@ -6,6 +6,8 @@ import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 import MotionDivs from "./MotionDivs";
 import useSound from "use-sound";
+import Drumloop from "./Drumloop";
+import { Howl } from "howler";
 
 import kickSound from "./instrumentSounds/kick.mp3";
 import snareSound from "./instrumentSounds/snare.mp3";
@@ -23,6 +25,7 @@ import Abass from "./instrumentSounds/abass.mp3";
 import Cbass from "./instrumentSounds/cbass.mp3";
 import Fbass from "./instrumentSounds/fbass.mp3";
 import Gbass from "./instrumentSounds/gbass.mp3";
+import drumLoop1 from "./instrumentSounds/drumloop1.mp3";
 
 function App() {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -31,6 +34,7 @@ function App() {
   const [letterColor, setLetterColor] = React.useState("white");
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
+  const [drumLoop, setDrumLoop] = React.useState(false);
 
   const [playKick] = useSound(kickSound, { interrupt: true });
   const [playSnare] = useSound(snareSound, { interrupt: true });
@@ -48,6 +52,11 @@ function App() {
   const [playCbass] = useSound(Cbass, { interrupt: true });
   const [playFbass] = useSound(Fbass, { interrupt: true });
   const [playGbass] = useSound(Gbass, { interrupt: true });
+
+  const rhythm = new Howl({
+    src: [drumLoop1],
+    loop: true,
+  });
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -172,6 +181,11 @@ function App() {
             </motion.h6>
           ) : (
             <>
+              <Drumloop
+                drumLoop={drumLoop}
+                setDrumLoop={setDrumLoop}
+                rhythm={rhythm}
+              />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>

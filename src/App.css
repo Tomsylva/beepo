@@ -79,6 +79,15 @@ p a {
   color: white;
 }
 
+.drum-loop-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
 @media screen and (max-height: 600px) {
   .beepo-text {
     display: none;
