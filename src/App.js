@@ -5,15 +5,16 @@ import Beepotext from "./Beepotext";
 import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 import MotionDivs from "./MotionDivs";
-// import useSound from "use-sound";
-
 import useSound from "use-sound";
 
-import kickSound from "./kick.mp3";
-
-// const BoopButton = () => {
-//   return <button onClick={playKick}>Boop!</button>;
-// };
+import kickSound from "./instrumentSounds/kick.mp3";
+import snareSound from "./instrumentSounds/snare.mp3";
+import hatsSound from "./instrumentSounds/hats.mp3";
+import crashSound from "./instrumentSounds/crash.mp3";
+import AbeepSound from "./instrumentSounds/abeep.mp3";
+import CbeepSound from "./instrumentSounds/cbeep.mp3";
+import FbeepSound from "./instrumentSounds/fbeep.mp3";
+import GbeepSound from "./instrumentSounds/gbeep.mp3";
 
 function App() {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -23,7 +24,20 @@ function App() {
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
 
-  const [playKick] = useSound(kickSound, { interrupt: true });
+  const [playKick] = useSound(kickSound, {
+    interrupt: true,
+  });
+  const [playSnare] = useSound(snareSound, {
+    interrupt: true,
+  });
+  const [playHats] = useSound(hatsSound, {
+    interrupt: true,
+  });
+  const [playCrash] = useSound(crashSound, { interrupt: true });
+  const [playAbeep] = useSound(AbeepSound, { interrupt: true });
+  const [playCbeep] = useSound(CbeepSound, { interrupt: true });
+  const [playFbeep] = useSound(FbeepSound, { interrupt: true });
+  const [playGbeep] = useSound(GbeepSound, { interrupt: true });
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -40,11 +54,41 @@ function App() {
         case 144:
           if (velocity > 0) {
             const currentColor = instruments[note].color;
-            playKick();
+
+            switch (note) {
+              case 36:
+                playKick();
+                break;
+              case 37:
+                playSnare();
+                break;
+              case 38:
+                playHats();
+                break;
+              case 39:
+                playCrash();
+                break;
+              case 48:
+                playAbeep();
+                break;
+              case 49:
+                playCbeep();
+                break;
+              case 50:
+                playFbeep();
+                break;
+              case 51:
+                playGbeep();
+                break;
+              default:
+                break;
+            }
+
             setActiveNote(note);
             setLetterColor(currentColor);
             setBackgroundColor("#30353d");
             setTouchMe(false);
+
             if (midiMessage.target.name !== "Playtron") {
               setErrorMessage(
                 "This online synth has been designed to work with a Playtron by Playtronica, however, all midi devices will work between C1 and D#2."

@@ -1,10 +1,17 @@
+// import snareSound from "./instrumentSounds/snare.mp3";
+// import kickSound from "./instrumentSounds/kick.mp3";
+
 export const instruments = {
   36: {
     instrumentName: "KICK",
     color: "rgb(255, 255, 98)",
     sound: "#",
   },
-  37: { instrumentName: "SNARE", color: "rgb(255, 255, 98)", sound: "#" },
+  37: {
+    instrumentName: "SNARE",
+    color: "rgb(255, 255, 98)",
+    sound: "#",
+  },
   38: { instrumentName: "HATS", color: "rgb(255, 255, 98)", sound: "#" },
   39: { instrumentName: "CRASH", color: "rgb(255, 255, 98)", sound: "#" },
   40: { instrumentName: "BASS E", color: "rgb(97, 224, 97)", sound: "#" },
