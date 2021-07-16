@@ -5,6 +5,15 @@ import Beepotext from "./Beepotext";
 import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 import MotionDivs from "./MotionDivs";
+// import useSound from "use-sound";
+
+import useSound from "use-sound";
+
+import kickSound from "./kick.mp3";
+
+// const BoopButton = () => {
+//   return <button onClick={playKick}>Boop!</button>;
+// };
 
 function App() {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -13,6 +22,8 @@ function App() {
   const [letterColor, setLetterColor] = React.useState("white");
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
+
+  const [playKick] = useSound(kickSound, { interrupt: true });
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -29,6 +40,7 @@ function App() {
         case 144:
           if (velocity > 0) {
             const currentColor = instruments[note].color;
+            playKick();
             setActiveNote(note);
             setLetterColor(currentColor);
             setBackgroundColor("#30353d");
@@ -74,7 +86,7 @@ function App() {
                 hidden: { opacity: 0, y: -150 },
                 visible: { opacity: 1, y: -150 },
                 transition: {
-                  delay: 0.5,
+                  delay: 1,
                 },
               }}
             >
