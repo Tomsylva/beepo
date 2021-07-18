@@ -1,6 +1,3 @@
-// import snareSound from "./instrumentSounds/snare.mp3";
-// import kickSound from "./instrumentSounds/kick.mp3";
-
 export const instruments = {
   36: {
     instrumentName: "KICK",
