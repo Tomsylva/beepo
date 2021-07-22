@@ -31,5 +31,5 @@ export const blackElephantLibrary = {
   midi48: BE13,
   midi49: BE14,
   midi50: BE15,
-  //   midi51: BE16,
+  midi51: null,
 };

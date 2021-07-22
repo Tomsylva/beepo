@@ -8,10 +8,10 @@ import MotionDivs from "./MotionDivs";
 import useSound from "use-sound";
 import Drumloop from "./Drumloop";
 import { Howl } from "howler";
-import { originalLibrary } from "./originalLibrary";
-import { pinaLibrary } from "./pinaLibrary";
+// import { originalLibrary } from "./originalLibrary";
+// import { pinaLibrary } from "./pinaLibrary";
 import { kotoLibrary } from "./kotoLibrary";
-import { blackElephantLibrary } from "./blackElephantLibrary";
+// import { blackElephantLibrary } from "./blackElephantLibrary";
 
 import drumLoop1 from "./instrumentSounds/drumloop1.mp3";
 
@@ -23,7 +23,7 @@ function App() {
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
   const [drumLoop, setDrumLoop] = React.useState(false);
-  const [currentLibrary, setCurrentLibrary] = React.useState(originalLibrary);
+  const [currentLibrary /*setCurrentLibrary*/] = React.useState(kotoLibrary);
 
   const [play36] = useSound(currentLibrary.midi36, { interrupt: true });
   const [play37] = useSound(currentLibrary.midi37, { interrupt: true });
@@ -46,6 +46,10 @@ function App() {
     src: [drumLoop1],
     loop: true,
   });
+
+  // function changeLibrary() {
+  //   setCurrentLibrary(pinaLibrary);
+  // }
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -144,10 +148,6 @@ function App() {
 
   navigator.requestMIDIAccess().then(onSuccess, onFail);
 
-  // function changeLibrary() {
-  //   setCurrentLibrary(pinaLibrary);
-  // }
-
   return (
     <div
       className="App"
@@ -180,9 +180,7 @@ function App() {
                 rhythm={rhythm}
               />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
-              {/* <motion.button onClick={changeLibrary}>
-                CHANGE SOUNDS
-              </motion.button> */}
+              {/* <motion.button onClick={changeLibrary}>PINA</motion.button> */}
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>
           )}
