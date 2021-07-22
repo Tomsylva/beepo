@@ -9,6 +9,9 @@ import useSound from "use-sound";
 import Drumloop from "./Drumloop";
 import { Howl } from "howler";
 import { originalLibrary } from "./originalLibrary";
+import { pinaLibrary } from "./pinaLibrary";
+import { kotoLibrary } from "./kotoLibrary";
+import { blackElephantLibrary } from "./blackElephantLibrary";
 
 import drumLoop1 from "./instrumentSounds/drumloop1.mp3";
 
@@ -141,6 +144,10 @@ function App() {
 
   navigator.requestMIDIAccess().then(onSuccess, onFail);
 
+  // function changeLibrary() {
+  //   setCurrentLibrary(pinaLibrary);
+  // }
+
   return (
     <div
       className="App"
@@ -173,6 +180,9 @@ function App() {
                 rhythm={rhythm}
               />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
+              {/* <motion.button onClick={changeLibrary}>
+                CHANGE SOUNDS
+              </motion.button> */}
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>
           )}
