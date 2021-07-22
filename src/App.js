@@ -8,23 +8,8 @@ import MotionDivs from "./MotionDivs";
 import useSound from "use-sound";
 import Drumloop from "./Drumloop";
 import { Howl } from "howler";
+import { originalLibrary } from "./originalLibrary";
 
-import kickSound from "./instrumentSounds/kick.mp3";
-import snareSound from "./instrumentSounds/snare.mp3";
-import hatsSound from "./instrumentSounds/hats.mp3";
-import crashSound from "./instrumentSounds/crash.mp3";
-import AbeepSound from "./instrumentSounds/abeep.mp3";
-import CbeepSound from "./instrumentSounds/cbeep.mp3";
-import FbeepSound from "./instrumentSounds/fbeep.mp3";
-import GbeepSound from "./instrumentSounds/gbeep.mp3";
-import Asplatter from "./instrumentSounds/asplatter.mp3";
-import Csplatter from "./instrumentSounds/csplatter.mp3";
-import Fsplatter from "./instrumentSounds/fsplatter.mp3";
-import Gsplatter from "./instrumentSounds/gsplatter.mp3";
-import Abass from "./instrumentSounds/abass.mp3";
-import Cbass from "./instrumentSounds/cbass.mp3";
-import Fbass from "./instrumentSounds/fbass.mp3";
-import Gbass from "./instrumentSounds/gbass.mp3";
 import drumLoop1 from "./instrumentSounds/drumloop1.mp3";
 
 function App() {
@@ -35,23 +20,24 @@ function App() {
   const [backgroundColor, setBackgroundColor] = React.useState("#2f333a");
   const [activeNote, setActiveNote] = React.useState(0);
   const [drumLoop, setDrumLoop] = React.useState(false);
+  const [currentLibrary, setCurrentLibrary] = React.useState(originalLibrary);
 
-  const [playKick] = useSound(kickSound, { interrupt: true });
-  const [playSnare] = useSound(snareSound, { interrupt: true });
-  const [playHats] = useSound(hatsSound, { interrupt: true });
-  const [playCrash] = useSound(crashSound, { interrupt: true });
-  const [playAbeep] = useSound(AbeepSound, { interrupt: true });
-  const [playCbeep] = useSound(CbeepSound, { interrupt: true });
-  const [playFbeep] = useSound(FbeepSound, { interrupt: true });
-  const [playGbeep] = useSound(GbeepSound, { interrupt: true });
-  const [playAsplatter] = useSound(Asplatter, { interrupt: true });
-  const [playCsplatter] = useSound(Csplatter, { interrupt: true });
-  const [playFsplatter] = useSound(Fsplatter, { interrupt: true });
-  const [playGsplatter] = useSound(Gsplatter, { interrupt: true });
-  const [playAbass] = useSound(Abass, { interrupt: true });
-  const [playCbass] = useSound(Cbass, { interrupt: true });
-  const [playFbass] = useSound(Fbass, { interrupt: true });
-  const [playGbass] = useSound(Gbass, { interrupt: true });
+  const [play36] = useSound(currentLibrary.midi36, { interrupt: true });
+  const [play37] = useSound(currentLibrary.midi37, { interrupt: true });
+  const [play38] = useSound(currentLibrary.midi38, { interrupt: true });
+  const [play39] = useSound(currentLibrary.midi39, { interrupt: true });
+  const [play40] = useSound(currentLibrary.midi40, { interrupt: true });
+  const [play41] = useSound(currentLibrary.midi41, { interrupt: true });
+  const [play42] = useSound(currentLibrary.midi42, { interrupt: true });
+  const [play43] = useSound(currentLibrary.midi43, { interrupt: true });
+  const [play44] = useSound(currentLibrary.midi44, { interrupt: true });
+  const [play45] = useSound(currentLibrary.midi45, { interrupt: true });
+  const [play46] = useSound(currentLibrary.midi46, { interrupt: true });
+  const [play47] = useSound(currentLibrary.midi47, { interrupt: true });
+  const [play48] = useSound(currentLibrary.midi48, { interrupt: true });
+  const [play49] = useSound(currentLibrary.midi49, { interrupt: true });
+  const [play50] = useSound(currentLibrary.midi50, { interrupt: true });
+  const [play51] = useSound(currentLibrary.midi51, { interrupt: true });
 
   const rhythm = new Howl({
     src: [drumLoop1],
@@ -76,52 +62,52 @@ function App() {
 
             switch (note) {
               case 36:
-                playKick();
+                play36();
                 break;
               case 37:
-                playSnare();
+                play37();
                 break;
               case 38:
-                playHats();
+                play38();
                 break;
               case 39:
-                playCrash();
+                play39();
                 break;
               case 40:
-                playAbass();
+                play40();
                 break;
               case 41:
-                playCbass();
+                play41();
                 break;
               case 42:
-                playFbass();
+                play42();
                 break;
               case 43:
-                playGbass();
+                play43();
                 break;
               case 44:
-                playAsplatter();
+                play44();
                 break;
               case 45:
-                playCsplatter();
+                play45();
                 break;
               case 46:
-                playFsplatter();
+                play46();
                 break;
               case 47:
-                playGsplatter();
+                play47();
                 break;
               case 48:
-                playAbeep();
+                play48();
                 break;
               case 49:
-                playCbeep();
+                play49();
                 break;
               case 50:
-                playFbeep();
+                play50();
                 break;
               case 51:
-                playGbeep();
+                play51();
                 break;
               default:
                 break;
