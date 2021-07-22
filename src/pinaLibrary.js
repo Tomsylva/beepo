@@ -16,6 +16,7 @@ import PC15 from "./instrumentSounds/PC15.mp3";
 import PC16 from "./instrumentSounds/PC16.mp3";
 
 export const pinaLibrary = {
+  name: "PINA LIBRARY",
   midi36: beerSound,
   midi37: coconutSound,
   midi38: cocktailSound,

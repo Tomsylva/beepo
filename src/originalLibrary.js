@@ -16,6 +16,7 @@ import Fbass from "./instrumentSounds/fbass.mp3";
 import Gbass from "./instrumentSounds/gbass.mp3";
 
 export const originalLibrary = {
+  name: "ORIGINAL LIBRARY",
   midi36: kickSound,
   midi37: snareSound,
   midi38: hatsSound,
