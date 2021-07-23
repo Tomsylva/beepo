@@ -4,7 +4,7 @@ import Beepotext from "./Beepotext";
 import { instruments } from "./instruments";
 import HomePage from "./HomePage";
 import MotionDivs from "./MotionDivs";
-import useSound from "use-sound";
+// import useSound from "use-sound";
 import Drumloop from "./Drumloop";
 import { Howl } from "howler";
 // import { pinaLibrary } from "./pinaLibrary";
@@ -25,33 +25,10 @@ function Synth(props) {
   const [activeNote, setActiveNote] = React.useState(0);
   const [drumLoop, setDrumLoop] = React.useState(false);
 
-  const [play36] = useSound(currentLibrary?.midi36, { interrupt: true });
-  const [play37] = useSound(currentLibrary?.midi37, { interrupt: true });
-  const [play38] = useSound(currentLibrary?.midi38, { interrupt: true });
-  const [play39] = useSound(currentLibrary?.midi39, { interrupt: true });
-  const [play40] = useSound(currentLibrary?.midi40, { interrupt: true });
-  const [play41] = useSound(currentLibrary?.midi41, { interrupt: true });
-  const [play42] = useSound(currentLibrary?.midi42, { interrupt: true });
-  const [play43] = useSound(currentLibrary?.midi43, { interrupt: true });
-  const [play44] = useSound(currentLibrary?.midi44, { interrupt: true });
-  const [play45] = useSound(currentLibrary?.midi45, { interrupt: true });
-  const [play46] = useSound(currentLibrary?.midi46, { interrupt: true });
-  const [play47] = useSound(currentLibrary?.midi47, { interrupt: true });
-  const [play48] = useSound(currentLibrary?.midi48, { interrupt: true });
-  const [play49] = useSound(currentLibrary?.midi49, { interrupt: true });
-  const [play50] = useSound(currentLibrary?.midi50, { interrupt: true });
-  const [play51] = useSound(currentLibrary?.midi51, { interrupt: true });
-
   const rhythm = new Howl({
     src: [drumLoop1],
     loop: true,
   });
-
-  //   function changeLibrary() {
-  //     setCurrentLibrary(pinaLibrary);
-  //   }
-
-  console.log("CURRENT LIBRARY (under func): ", currentLibrary.name);
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -62,71 +39,22 @@ function Synth(props) {
       const command = midiMessage.data[0];
       const note = midiMessage.data[1];
       const velocity = midiMessage.data.length > 2 ? midiMessage.data[2] : 0;
-
       // eslint-disable-next-line
       switch (command) {
         case 144:
           if (velocity > 0) {
             const currentColor = instruments[note].color;
 
-            switch (note) {
-              case 36:
-                play36();
-                // console.log("CURRENT LIBRARY (case 36): ", currentLibrary.name);
-                break;
-              case 37:
-                play37();
-                break;
-              case 38:
-                play38();
-                break;
-              case 39:
-                play39();
-                break;
-              case 40:
-                play40();
-                break;
-              case 41:
-                play41();
-                break;
-              case 42:
-                play42();
-                break;
-              case 43:
-                play43();
-                break;
-              case 44:
-                play44();
-                break;
-              case 45:
-                play45();
-                break;
-              case 46:
-                play46();
-                break;
-              case 47:
-                play47();
-                break;
-              case 48:
-                play48();
-                break;
-              case 49:
-                play49();
-                break;
-              case 50:
-                play50();
-                break;
-              case 51:
-                play51();
-                break;
-              default:
-                break;
+            if (
+              currentLibrary[note] &&
+              currentLibrary[note].playing() !== true
+            ) {
+              currentLibrary[note].play();
+              setActiveNote(note);
+              setLetterColor(currentColor);
+              setBackgroundColor("#30353d");
+              setTouchMe(false);
             }
-
-            setActiveNote(note);
-            setLetterColor(currentColor);
-            setBackgroundColor("#30353d");
-            setTouchMe(false);
 
             if (midiMessage.target.name !== "Playtron") {
               setErrorMessage(
@@ -183,7 +111,6 @@ function Synth(props) {
                 rhythm={rhythm}
               />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
-              {/* <motion.button onClick={changeLibrary}>PINA</motion.button> */}
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>
           )}

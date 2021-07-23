@@ -1,36 +1,55 @@
-import kickSound from "./instrumentSounds/kick.mp3";
-import snareSound from "./instrumentSounds/snare.mp3";
-import hatsSound from "./instrumentSounds/hats.mp3";
-import crashSound from "./instrumentSounds/crash.mp3";
-import AbeepSound from "./instrumentSounds/abeep.mp3";
-import CbeepSound from "./instrumentSounds/cbeep.mp3";
-import FbeepSound from "./instrumentSounds/fbeep.mp3";
-import GbeepSound from "./instrumentSounds/gbeep.mp3";
-import Asplatter from "./instrumentSounds/asplatter.mp3";
-import Csplatter from "./instrumentSounds/csplatter.mp3";
-import Fsplatter from "./instrumentSounds/fsplatter.mp3";
-import Gsplatter from "./instrumentSounds/gsplatter.mp3";
-import Abass from "./instrumentSounds/abass.mp3";
-import Cbass from "./instrumentSounds/cbass.mp3";
-import Fbass from "./instrumentSounds/fbass.mp3";
-import Gbass from "./instrumentSounds/gbass.mp3";
+import { Howl } from "howler";
+
+import s36 from "./instrumentSounds/kick.mp3";
 
 export const originalLibrary = {
   name: "ORIGINAL LIBRARY",
-  midi36: kickSound,
-  midi37: snareSound,
-  midi38: hatsSound,
-  midi39: crashSound,
-  midi40: AbeepSound,
-  midi41: CbeepSound,
-  midi42: FbeepSound,
-  midi43: GbeepSound,
-  midi44: Asplatter,
-  midi45: Csplatter,
-  midi46: Fsplatter,
-  midi47: Gsplatter,
-  midi48: Abass,
-  midi49: Cbass,
-  midi50: Fbass,
-  midi51: Gbass,
+  36: new Howl({
+    src: [s36],
+  }),
+  37: new Howl({
+    src: ["./instrumentSounds/snare.mp3"],
+  }),
+  38: new Howl({
+    src: ["./instrumentSounds/hats.mp3"],
+  }),
+  39: new Howl({
+    src: ["./instrumentSounds/crash.mp3"],
+  }),
+  40: new Howl({
+    src: ["./instrumentSounds/abeep.mp3"],
+  }),
+  41: new Howl({
+    src: ["./instrumentSounds/cbeep.mp3"],
+  }),
+  42: new Howl({
+    src: ["./instrumentSounds/fbeep.mp3"],
+  }),
+  43: new Howl({
+    src: ["./instrumentSounds/gbeep.mp3"],
+  }),
+  44: new Howl({
+    src: ["./instrumentSounds/asplatter.mp3"],
+  }),
+  45: new Howl({
+    src: ["./instrumentSounds/csplatter.mp3"],
+  }),
+  46: new Howl({
+    src: ["./instrumentSounds/fsplatter.mp3"],
+  }),
+  47: new Howl({
+    src: ["./instrumentSounds/gsplatter.mp3"],
+  }),
+  48: new Howl({
+    src: ["./instrumentSounds/abass.mp3"],
+  }),
+  49: new Howl({
+    src: ["./instrumentSounds/cbass.mp3"],
+  }),
+  50: new Howl({
+    src: ["./instrumentSounds/fbass.mp3"],
+  }),
+  51: new Howl({
+    src: ["./instrumentSounds/gbass.mp3"],
+  }),
 };
