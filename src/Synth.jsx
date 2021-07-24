@@ -30,9 +30,13 @@ function Synth(props) {
     loop: true,
   });
 
-  function changeKoto() {
+  // function changeKoto() {
+  //   setCurrentLibrary(kotoLibrary);
+  // }
+
+  const setKoto = React.useCallback(() => {
     setCurrentLibrary(kotoLibrary);
-  }
+  }, [setCurrentLibrary]);
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -120,7 +124,7 @@ function Synth(props) {
                 rhythm={rhythm}
               />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
-              <motion.button onClick={changeKoto}>KOTO</motion.button>
+              <motion.button onClick={setKoto}>KOTO</motion.button>
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>
           )}
