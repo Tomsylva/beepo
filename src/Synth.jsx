@@ -8,14 +8,14 @@ import MotionDivs from "./MotionDivs";
 import Drumloop from "./Drumloop";
 import { Howl } from "howler";
 // import { pinaLibrary } from "./pinaLibrary";
-// import { kotoLibrary } from "./kotoLibrary";
+import { kotoLibrary } from "./kotoLibrary";
 // import { originalLibrary } from "./originalLibrary";
 // import { blackElephantLibrary } from "./blackElephantLibrary";
 
 import drumLoop1 from "./instrumentSounds/drumloop1.mp3";
 
 function Synth(props) {
-  const { currentLibrary /*setCurrentLibrary*/ } = props;
+  const { currentLibrary, setCurrentLibrary } = props;
 
   const [errorMessage, setErrorMessage] = React.useState("");
   const [page, setPage] = React.useState("home");
@@ -29,6 +29,10 @@ function Synth(props) {
     src: [drumLoop1],
     loop: true,
   });
+
+  function changeKoto() {
+    setCurrentLibrary(kotoLibrary);
+  }
 
   const onSuccess = function (midiAccess) {
     const inputs = midiAccess.inputs;
@@ -50,6 +54,11 @@ function Synth(props) {
               currentLibrary[note].playing() !== true
             ) {
               currentLibrary[note].play();
+              console.log(
+                "CURRENT NOTE: ",
+                currentLibrary.name,
+                currentLibrary[note]
+              );
               setActiveNote(note);
               setLetterColor(currentColor);
               setBackgroundColor("#30353d");
@@ -111,6 +120,7 @@ function Synth(props) {
                 rhythm={rhythm}
               />
               <Beepotext letterColor={letterColor} activeNote={activeNote} />
+              <motion.button onClick={changeKoto}>KOTO</motion.button>
               <MotionDivs activeNote={activeNote} letterColor={letterColor} />
             </>
           )}
