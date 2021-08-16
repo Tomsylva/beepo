@@ -2,9 +2,11 @@ import "./App.css";
 import React from "react";
 import { originalLibrary } from "./originalLibrary";
 import Synth from "./Synth";
+import { blackElephantLibrary } from "./blackElephantLibrary";
 
 function App() {
-  const [currentLibrary, setCurrentLibrary] = React.useState(originalLibrary);
+  const [currentLibrary, setCurrentLibrary] =
+    React.useState(blackElephantLibrary);
 
   return (
     <div>

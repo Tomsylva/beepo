@@ -1,3 +1,5 @@
+import { Howl } from "howler";
+
 import _36 from "./instrumentSounds/BE1.mp3";
 import _37 from "./instrumentSounds/BE2.mp3";
 import _38 from "./instrumentSounds/BE3.mp3";
@@ -13,7 +15,6 @@ import _47 from "./instrumentSounds/BE12.mp3";
 import _48 from "./instrumentSounds/BE13.mp3";
 import _49 from "./instrumentSounds/BE14.mp3";
 import _50 from "./instrumentSounds/BE15.mp3";
-// import _51 from "./instrumentSounds/BE16.mp3";
 
 export const blackElephantLibrary = {
   name: "BLACK ELEPHANT LIBRARY",
@@ -62,7 +63,4 @@ export const blackElephantLibrary = {
   50: new Howl({
     src: [_50],
   }),
-  // 51: new Howl({
-  //   src: [_51],
-  // }),
 };
